@@ -8,6 +8,8 @@ import CartButton from "@/components/CartButton";
 import cn from 'clsx';
 import MenuCard from "@/components/MenuCard";
 import {MenuItem} from "@/type";
+import Filter from "@/components/Filter";
+import SearchBar from "@/components/SearchBar";
 
 
 const Search = () => {
@@ -21,6 +23,7 @@ const Search = () => {
         }
     })
     const {data:categories} = useAppWrite({ fn: getCategory})
+
 
     useEffect(() => {
         refetch({category, query, limit:6})
@@ -55,8 +58,8 @@ const Search = () => {
                        <CartButton/>
                    </View>
 
-                   <Text>Search Input</Text>
-                   <Text>Filter</Text>
+                   <SearchBar/>
+                  <Filter categories={categories!}/>
                </View>
            )}
                      ListEmptyComponent={() => !loading && <Text>No results found</Text>}/>
